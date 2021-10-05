@@ -26,20 +26,20 @@ There are two approaches that are generally used for this purpose:
 
 ## 1. Unique Identifier approach and the Static Rule approach. 
 
-In this approach, user has to manually select the rules based on which the algorithm will be applied. Here user can also select the match precision, for example exact match or high/medium/low.
+In this approach, the user has to manually select the rules that the algorithm will use. Here, the user can also select the level of match precision; For example: exact match, or high/medium/low match.
    1. Exact Match
-      - When selecting Exact match, rule will try to match the value exactly. User can also select transformation over the data like, removal of white space. But a values will be considered as match only when they are exactly same after the transformation
+      - When Exact match is selected, the rule will try to match the value exactly. The user can also select a transformation over the data such as removal of white space; However values will be considered an exact match only when they are exactly the same after the transformation has taken place.
    2. Partial/Fuzzy Match
-      - When user selects, match precision as High/Medium/low, they gets the option to select which kind of algorithm they want to apply.
-      - Currently SkyPoint Supports, Phonetic match, distance based Levenshtein match.
-      - User can select Phonetic match over the column in which a match would be considered true when both the matching values are phonetically similar. ex- Dylan and Dillon
-      - Distance based Levenshtein is a dynamic programming based approach and one of the most used approach for good quality matches. In the approach, two values are considered to be a match when converting from one value to another, requires less number of transactions. ex- Tony and Tonyy. Converting Tony to Tonyy requires only 1 transactions. Addition of 1 Y. 1 Transaction can be either update, delete, addition  
-      - ML based match is also in the work in progress. In this ML based approach, we are creating a statiscal model, which creates a multiple dimentional projection (around 300 dimentional projection) of a value and then we put the locality sensitive hashing to put the similar values in the same bucket. More on this soon...
-      - While choosing the desired algorithms, user can apply more than 1 alorithm with logical AND/OR fashion between them to improve their search results
-      - Note: The selection of Levenshtein algorithm might increase the Match run time significantly
+      - When the user selects match precision as High/Medium/low, they will have the option to select which kind of algorithm they want to apply to the rule.
+      - Currently SkyPoint supports Phonetic match and distance based Levenshtein match.
+      - The user can select Phonetic match over the column in which a match would be considered true when both the matching values are phonetically similar (i.e. Dylan and Dillon).
+      - Distance based Levenshtein matching is a dynamic programming based approach, and it is one of the most used approaches for high quality matches. In this approach, two values are considered to be a match when converting from one value to another requires less number of transactions, as exemplified by the two values Tony and Tonyy). Converting Tony to Tonyy requires the addition of 1 Y, which is a single transaction. This single transaction can be any of the following actions: update, delete, addition.  
+      - ML based match is a work in progress. In this ML based approach, we are creating a statiscal model. This model creates a multiple dimentional projection (around 300 dimentional projection) of a value, which is then put into the locality sensitive hashing to put the similar values in the same bucket. More on this soon...
+      - When choosing the desired algorithms, the user can apply more than 1 alorithm with logic AND/OR fashion between them to improve their search results.
+      - Note: The selection of Levenshtein algorithm might increase the Match run time significantly.
 
 ## 2. Machine Learning approach 
 
-In this approach, we are trying to find the records match without any human involvement. 
+In this approach, the algorithms are trying to find the record's match without any human involvement. 
 
-In this approach, user do not need to create any manual rule but the algorithm will itself figure out (based on the semantic labels), whether 2 or more records should be considered a match or not.
+In this approach, the user does not need to create any manual rule, but the algorithm will figure out (based on the semantic labels) whether 2 or more records should be considered a match based on its own learning.
